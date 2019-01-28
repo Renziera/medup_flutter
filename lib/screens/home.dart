@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
+import 'beranda.dart';
 
 /**
  * Tampilan utama aplikasi
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   //list of widgets to render
   final List<Widget> _children = [
-    Text('Berandaku'),
+    Beranda(),
     Text(
       'Perjanjian',
       style: TextStyle(fontWeight: FontWeight.bold),
@@ -44,7 +45,10 @@ class _HomeState extends State<Home> {
       backgroundColor: primaryColor,
     ),
     AppBar(
-      title: Text('Profil'),
+      title: Text(
+        'Profil',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
       elevation: 0,
       backgroundColor: primaryColor,
     ),
