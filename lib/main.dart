@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
-import 'ui.dart';
-import 'networking.dart';
+import 'package:medup_flutter/ui.dart';
+import 'package:medup_flutter/screens/home.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MedUp());
+
+class MedUp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MedUp Indonesia',
+      theme: ThemeData(
+        primaryColor: primaryColor,
+        primaryColorDark: primaryDarkColor,
+        fontFamily: 'Lato',
+      ),
+      home: Home(),
+    );
+  }
+  
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: primaryColor,
+        primaryColorDark: primaryDarkColor,
+      ),
       title: 'Welcome to Flutter',
       home: Scaffold(
-        appBar: AppBar(
-          //leading: Image.asset("im_logo.png"),
-          title: Text('Med Up'),
-          elevation: 0,
-        ),
+        appBar: AppBarLogo(),
         body: ListView(
           children: <Widget>[
             Column(
@@ -34,7 +50,7 @@ class MyApp extends StatelessWidget {
                       ),
                       Row(
                         children: <Widget>[
-                          Image.asset('assets/images/im_logo.png'),
+                          //Image.asset('assets/images/im_logo.png'),
                         ],
                       ),
                     ],
@@ -51,7 +67,7 @@ class MyApp extends StatelessWidget {
                   children: <Widget>[
                     Card(
                       elevation: 8,
-                      child: Text("This is a card"),
+                      child: Text("This is a card perhaps"),
                     ),
                   ],
                 ),

@@ -1,6 +1,6 @@
 # medup_flutter
 
-A new Flutter project.
+Aplikasi MedUp Indonesia versi Flutter
 
 ## Getting Started
 
