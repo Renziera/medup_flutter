@@ -13,8 +13,8 @@ class _SearchDokterState extends State<SearchDokter> {
   String queryNama = "";
   TextField _textField = TextField();
 
-  _SearchDokterState(String spesialis){
-    _textField.controller.text;
+  _SearchDokterState({String spesialis}){
+    //_textField.controller.text;
   }
 
   @override
@@ -28,7 +28,7 @@ class _SearchDokterState extends State<SearchDokter> {
             backgroundColor: primaryColor,
             expandedHeight: 150.0,
             flexibleSpace: FlexibleSpaceBar(
-              background: _searchBar(),
+              background: _searchBar(context),
             ),
             floating: true,
             automaticallyImplyLeading: false,
@@ -40,12 +40,12 @@ class _SearchDokterState extends State<SearchDokter> {
     );
   }
 
-  Widget _searchBar() {
+  Widget _searchBar(context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -60,10 +60,12 @@ class _SearchDokterState extends State<SearchDokter> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/dokter/filter');
+                },
                 child: Text('FILTER'),
               ),
               FlatButton(

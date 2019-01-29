@@ -91,7 +91,9 @@ class Beranda extends StatelessWidget {
                   'CARI FASILITAS KESEHATAN',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/intro');
+                },
               ),
               Divider(
                 indent: 8.0,
