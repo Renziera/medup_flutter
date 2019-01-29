@@ -28,30 +28,9 @@ class _HomeState extends State<Home> {
   ];
   //list AppBar soalnya beda"
   final List<AppBar> _appBars = [
-    AppBar(
-      title: Image.asset(
-        'assets/images/ic_medup_white.png',
-        height: 32.0,
-      ),
-      elevation: 0,
-      backgroundColor: primaryColor,
-    ),
-    AppBar(
-      title: Text(
-        'Perjanjian',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      elevation: 0,
-      backgroundColor: primaryColor,
-    ),
-    AppBar(
-      title: Text(
-        'Profil',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      elevation: 0,
-      backgroundColor: primaryColor,
-    ),
+    appBarLogo(),
+    appBarTitle(title: 'Perjanjian'),
+    appBarTitle(title: 'Profil'),
   ];
 
   @override

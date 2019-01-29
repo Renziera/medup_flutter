@@ -5,14 +5,47 @@ import 'package:flutter/material.dart';
  * More complex widgets should be composed in screens
  */
 
+/// Color constant
+
 const primaryColor = const Color(0xff3097d9);
 const primaryDarkColor = const Color(0xff0070a3);
+const primaryLightColor = const Color(0xff59b8eb);
+const primaryAccentColor = const Color(0xff3498db);
 
-AppBar AppBarLogo() {
+AppBar appBarLogo() {
   return AppBar(
     title: Image.asset(
       'assets/images/ic_medup_white.png',
       height: 32.0,
+    ),
+    elevation: 0,
+    backgroundColor: primaryColor,
+  );
+}
+
+AppBar appBarBack({@required String title}) {
+  return AppBar(
+    title: Text(
+      title,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+    ),
+    leading: Icon(Icons.arrow_back),
+    elevation: 0,
+    backgroundColor: primaryColor,
+    automaticallyImplyLeading: false,
+  );
+}
+
+AppBar appBarTitle({@required String title}) {
+  return AppBar(
+    title: Text(
+      title,
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     elevation: 0,
     backgroundColor: primaryColor,
@@ -31,7 +64,15 @@ class ButtonSquare extends StatelessWidget {
       onPressed: () {
         _callback();
       },
-      child: Text(_label),
+      child: Text(
+        _label,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      textColor: Colors.white,
+      color: primaryColor,
     );
   }
 }

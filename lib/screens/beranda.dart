@@ -7,7 +7,7 @@ class Beranda extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.vertical,
       children: <Widget>[
-        _banner,
+        _banner(context),
         _faskes,
         Container(
           child: Divider(
@@ -23,98 +23,105 @@ class Beranda extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.0),
         ),
         _darurat,
-        Divider(height: 16, color: Colors.transparent,)
+        Divider(
+          height: 16,
+          color: Colors.transparent,
+        )
       ],
     );
   }
 
-  Widget _banner = Container(
-    color: primaryColor,
-    padding: EdgeInsets.fromLTRB(24, 16, 24, 16),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Sehat Sekarang',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Lato',
-              fontSize: 36.0,
-              fontWeight: FontWeight.bold),
-        ),
-        Text(
-          'bersama MedUp',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Lato',
-              fontSize: 36.0,
-              fontWeight: FontWeight.bold),
-        ),
-        Divider(
-          height: 12.0,
-          color: Colors.transparent,
-        ),
-        Text(
-          'FASILITAS KESEHATAN DAN DOKTER',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Lato',
-              fontSize: 14.0,
-              fontWeight: FontWeight.w100),
-        ),
-        Text(
-          'DALAM GENGGAMAN ANDA',
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Lato',
-              fontSize: 14.0,
-              fontWeight: FontWeight.w100),
-        ),
-        Divider(
-          height: 12.0,
-          color: Colors.transparent,
-        ),
-        Row(
-          children: <Widget>[
-            OutlineButton(
-              borderSide: BorderSide(
+  Widget _banner(context) {
+    return Container(
+      color: primaryColor,
+      padding: EdgeInsets.fromLTRB(24, 16, 24, 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Sehat Sekarang',
+            style: TextStyle(
                 color: Colors.white,
-                style: BorderStyle.solid,
-              ),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
-              child: Text(
-                'CARI FASILITAS KESEHATAN',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {},
-            ),
-            Divider(
-              indent: 8.0,
-              color: Colors.transparent,
-            ),
-            OutlineButton(
-              borderSide: BorderSide(
+                fontFamily: 'Lato',
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'bersama MedUp',
+            style: TextStyle(
                 color: Colors.white,
-                style: BorderStyle.solid,
-              ),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
-              child: Text(
-                'CARI DOKTER',
-                style: TextStyle(
+                fontFamily: 'Lato',
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold),
+          ),
+          Divider(
+            height: 12.0,
+            color: Colors.transparent,
+          ),
+          Text(
+            'FASILITAS KESEHATAN DAN DOKTER',
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Lato',
+                fontSize: 14.0,
+                fontWeight: FontWeight.w100),
+          ),
+          Text(
+            'DALAM GENGGAMAN ANDA',
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'Lato',
+                fontSize: 14.0,
+                fontWeight: FontWeight.w100),
+          ),
+          Divider(
+            height: 12.0,
+            color: Colors.transparent,
+          ),
+          Row(
+            children: <Widget>[
+              OutlineButton(
+                borderSide: BorderSide(
                   color: Colors.white,
+                  style: BorderStyle.solid,
                 ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                child: Text(
+                  'CARI FASILITAS KESEHATAN',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {},
               ),
-              onPressed: () {},
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
+              Divider(
+                indent: 8.0,
+                color: Colors.transparent,
+              ),
+              OutlineButton(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  style: BorderStyle.solid,
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                child: Text(
+                  'CARI DOKTER',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/dokter/search');
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
-  Widget _faskes = Container(
+  final Widget _faskes = Container(
     padding: EdgeInsets.all(16.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,7 +287,7 @@ class Beranda extends StatelessWidget {
     ),
   );
 
-  Widget _dokter = Container(
+  final Widget _dokter = Container(
     padding: EdgeInsets.all(16.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -470,7 +477,7 @@ class Beranda extends StatelessWidget {
                       color: Colors.transparent,
                     ),
                     Image.asset(
-                      'assets/images/kandungans.png',
+                      'assets/images/kandungan.png',
                       height: 48,
                       width: 48,
                     ),
@@ -538,7 +545,7 @@ class Beranda extends StatelessWidget {
     ),
   );
 
-  Widget _darurat = Container(
+  final Widget _darurat = Container(
     padding: EdgeInsets.all(16.0),
     child: FlatButton(
       onPressed: () {},
@@ -546,14 +553,20 @@ class Beranda extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Image.asset('assets/images/darurat.png', height: 48.0,),
+          Image.asset(
+            'assets/images/darurat.png',
+            height: 48.0,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text('Panggilan Darurat'),
-              Text('Temukan rumah sakit terdekat dengan lokasi Anda', style: TextStyle(
-                fontSize: 12,
-              ),),
+              Text(
+                'Temukan rumah sakit terdekat dengan lokasi Anda',
+                style: TextStyle(
+                  fontSize: 12,
+                ),
+              ),
             ],
           ),
         ],
