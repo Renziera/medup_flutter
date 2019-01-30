@@ -17,20 +17,16 @@ class _PerjanjianState extends State<Perjanjian> {
   }
 }
 
-class RiwayatPerjanjian extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _RiwayatPerjanjianState();
-  }
-}
-
-class _RiwayatPerjanjianState extends State<RiwayatPerjanjian> {
+class RiwayatPerjanjian extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarTitle(title: 'Riwayat Janji'),
-      body: ListView(
-        
+      body: ListView.builder(
+        itemCount: 12,
+        itemBuilder: (BuildContext context, int index) {
+          print(index);
+        },
       ),
     );
   }

@@ -4,19 +4,26 @@ import 'package:medup_flutter/ui.dart';
 class Login extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return null;
+    return _LoginState();
   }
 }
 
-class _LoginState extends State<Login>{
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        
-      ],
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SwitchListTile(
+            onChanged: (bool value) {},
+            value: true,
+            activeColor: primaryColor,
+            title: Text('Daftar'),
+          ),
+        ],
+      ),
     );
   }
 }

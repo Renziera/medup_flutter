@@ -26,28 +26,35 @@ class _HomeState extends State<Home> {
     Profil(),
   ];
   //list AppBar soalnya beda"
-  final List<AppBar> _appBars = [
-    appBarLogo(),
-    AppBar(
-      title: Text(
-        'Perjanjian',
-        style: TextStyle(fontWeight: FontWeight.bold),
+  List<AppBar> _appBars(context) {
+    return [
+      appBarLogo(),
+      AppBar(
+        title: Text(
+          'Perjanjian',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        elevation: 0,
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/riwayat');
+            },
+            child: Icon(
+              Icons.history,
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
-      elevation: 0,
-      actions: <Widget>[
-        FlatButton(
-          onPressed: () {},
-          child: Icon(Icons.history, color: Colors.white,),
-        )
-      ],
-    ),
-    appBarTitle(title: 'Profil'),
-  ];
+      appBarTitle(title: 'Profil'),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBars[_currentIndex],
+      appBar: _appBars(context)[_currentIndex],
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -96,6 +103,11 @@ class _HomeState extends State<Home> {
   }
 
   void onTabTapped(int index) {
+    if (index == 2) {
+      //Cek login disini
+      Navigator.pushNamed(context, '/login');
+      return;
+    }
     setState(() {
       _currentIndex = index;
     });

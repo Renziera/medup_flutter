@@ -9,5 +9,19 @@ class PanggilanDarurat extends StatelessWidget {
       body: Text('Google Maps here'),
     );
   }
-  
+}
+
+class FaskesTerdekat extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBarTitle(title: 'Faskes Terdekat'),
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          
+        },
+        itemCount: 1,
+      ),
+    );
+  }
 }
