@@ -159,8 +159,9 @@ class _SearchDokterState extends State<SearchDokter> {
     );
   }
 
-  void _cari() {
-    TembakAPI.searchDokter();
-
+  void _cari() async {
+    print('Sup');
+    String s = await TembakAPI.test();
+    print(s);
   }
 }

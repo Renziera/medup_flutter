@@ -10,21 +10,18 @@ class TembakAPI {
 
   static const String BASE_URL = 'https://api.medup.id';
 
-  static void getSpesialis() {
-    var response = get('$BASE_URL/spesialisasi');
+  static void getSpesialis() async {
+    Response response = await get('$BASE_URL/spesialisasi');
 
+  }
+
+  static Future<String> test() async {
+    return await true ? 'Helol' : 'World';
   }
 
   static void searchDokter({String spesialis}) async{
-    var response = await post('$BASE_URL/search_doctor');
+    Response response = await post('$BASE_URL/search_doctor');
     print(response.body);
     
   }
-
-  static void fetchData() async {
-    print('Gonna req');
-    Response result = await get('https://jsonplaceholder.typicode.com/photos');
-    print('Done');
-  }
-
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
 import 'beranda.dart';
+import 'perjanjian.dart';
+import 'profil.dart';
 
 /**
  * Tampilan utama aplikasi
@@ -20,16 +22,25 @@ class _HomeState extends State<Home> {
   //list of widgets to render
   final List<Widget> _children = [
     Beranda(),
-    Text(
-      'Perjanjian',
-      style: TextStyle(fontWeight: FontWeight.bold),
-    ),
-    Text('Profil'),
+    Perjanjian(),
+    Profil(),
   ];
   //list AppBar soalnya beda"
   final List<AppBar> _appBars = [
     appBarLogo(),
-    appBarTitle(title: 'Perjanjian'),
+    AppBar(
+      title: Text(
+        'Perjanjian',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      elevation: 0,
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {},
+          child: Icon(Icons.history, color: Colors.white,),
+        )
+      ],
+    ),
     appBarTitle(title: 'Profil'),
   ];
 

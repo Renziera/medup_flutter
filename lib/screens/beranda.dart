@@ -8,21 +8,21 @@ class Beranda extends StatelessWidget {
       scrollDirection: Axis.vertical,
       children: <Widget>[
         _banner(context),
-        _faskes,
+        _faskes(context),
         Container(
           child: Divider(
             color: Colors.black45,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.0),
         ),
-        _dokter,
+        _dokter(context),
         Container(
           child: Divider(
             color: Colors.black45,
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.0),
         ),
-        _darurat,
+        _darurat(context),
         Divider(
           height: 16,
           color: Colors.transparent,
@@ -123,456 +123,464 @@ class Beranda extends StatelessWidget {
     );
   }
 
-  final Widget _faskes = Container(
-    padding: EdgeInsets.all(16.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Fasilitas Kesehatan',
-          style: TextStyle(fontSize: 16.0),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              'Temukan rumah sakit terdekat dengan lokasi Anda',
-              style: TextStyle(fontSize: 12.0),
-            ),
-            FlatButton(
-              child: Text(
-                'LIHAT SEMUA',
-                style: TextStyle(color: primaryColor, fontSize: 12),
-              ),
-              onPressed: () {},
-            )
-          ],
-        ),
-        Container(
-          height: 90,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/rumah sakit.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Rumah Sakit',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/klinik.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Klinik',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/gigi.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Klinik Gigi',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/kecantikan.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Klinik',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                    Text(
-                      'Kecantikan',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/perseorangan.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Praktek',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                    Text(
-                      'Perseorangan',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final Widget _dokter = Container(
-    padding: EdgeInsets.all(16.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Dokter Spesialis',
-          style: TextStyle(fontSize: 16.0),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              'Temukan dokter yang handal dan terpercaya',
-              style: TextStyle(fontSize: 12.0),
-            ),
-            FlatButton(
-              child: Text(
-                'LIHAT SEMUA',
-                style: TextStyle(color: primaryColor, fontSize: 12),
-              ),
-              onPressed: () {},
-            )
-          ],
-        ),
-        Container(
-          height: 90,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/umum.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Umum',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/gigi.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Gigi',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/bedah.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Bedah',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/jantung.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Jantung',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/mata.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Mata',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/paru paru.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Paru',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/kandungan.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Kandungan',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/penyakit dalam.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Penyakit Dalam',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                color: Colors.transparent,
-                indent: 8.0,
-              ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    Divider(
-                      height: 8.0,
-                      color: Colors.transparent,
-                    ),
-                    Image.asset(
-                      'assets/images/syaraf.png',
-                      height: 48,
-                      width: 48,
-                    ),
-                    Text(
-                      'Saraf',
-                      style: TextStyle(color: primaryColor, fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final Widget _darurat = Container(
-    padding: EdgeInsets.all(16.0),
-    child: FlatButton(
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
+  Widget _faskes(context) {
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Image.asset(
-            'assets/images/darurat.png',
-            height: 48.0,
+          Text(
+            'Fasilitas Kesehatan',
+            style: TextStyle(fontSize: 16.0),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('Panggilan Darurat'),
               Text(
                 'Temukan rumah sakit terdekat dengan lokasi Anda',
-                style: TextStyle(
-                  fontSize: 12,
-                ),
+                style: TextStyle(fontSize: 12.0),
               ),
+              FlatButton(
+                child: Text(
+                  'LIHAT SEMUA',
+                  style: TextStyle(color: primaryColor, fontSize: 12),
+                ),
+                onPressed: () {},
+              )
             ],
+          ),
+          Container(
+            height: 90,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/rumah sakit.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Rumah Sakit',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/klinik.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Klinik',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/gigi.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Klinik Gigi',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/kecantikan.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Klinik',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                      Text(
+                        'Kecantikan',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/perseorangan.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Praktek',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                      Text(
+                        'Perseorangan',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
-    ),
-  );
+    );
+  }
+
+  Widget _dokter(context) {
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Dokter Spesialis',
+            style: TextStyle(fontSize: 16.0),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                'Temukan dokter yang handal dan terpercaya',
+                style: TextStyle(fontSize: 12.0),
+              ),
+              FlatButton(
+                child: Text(
+                  'LIHAT SEMUA',
+                  style: TextStyle(color: primaryColor, fontSize: 12),
+                ),
+                onPressed: () {},
+              )
+            ],
+          ),
+          Container(
+            height: 90,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/umum.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Umum',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/gigi.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Gigi',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/bedah.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Bedah',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/jantung.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Jantung',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/mata.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Mata',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/paru paru.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Paru',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/kandungan.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Kandungan',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/penyakit dalam.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Penyakit Dalam',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                  indent: 8.0,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Divider(
+                        height: 8.0,
+                        color: Colors.transparent,
+                      ),
+                      Image.asset(
+                        'assets/images/syaraf.png',
+                        height: 48,
+                        width: 48,
+                      ),
+                      Text(
+                        'Saraf',
+                        style: TextStyle(color: primaryColor, fontSize: 12.0),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _darurat(context) {
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      child: FlatButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/darurat');
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/darurat.png',
+              height: 48.0,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Panggilan Darurat'),
+                Text(
+                  'Temukan rumah sakit terdekat dengan lokasi Anda',
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

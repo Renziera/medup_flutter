@@ -23,21 +23,6 @@ AppBar appBarLogo() {
   );
 }
 
-AppBar appBarBack({@required String title}) {
-  return AppBar(
-    title: Text(
-      title,
-      style: TextStyle(
-        color: Colors.white,
-      ),
-    ),
-    leading: Icon(Icons.arrow_back),
-    elevation: 0,
-    backgroundColor: primaryColor,
-    automaticallyImplyLeading: false,
-  );
-}
-
 AppBar appBarTitle({@required String title}) {
   return AppBar(
     title: Text(
