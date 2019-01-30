@@ -4,6 +4,7 @@ import 'package:medup_flutter/screens/home.dart';
 import 'package:medup_flutter/screens/searchDokter.dart';
 import 'package:medup_flutter/screens/filterDokter.dart';
 import 'package:medup_flutter/screens/intro.dart';
+import 'package:medup_flutter/screens/perjanjian.dart';
 
 void main() => runApp(MedUp());
 
@@ -24,7 +25,8 @@ class MedUp extends StatelessWidget {
         '/home' : (context) => Home(),
         '/dokter/search': (context) => SearchDokter(),
         '/dokter/filter': (context) => FilterDokter(),
-        '/intro': (context)=>Intro(),
+        '/intro': (context) => Intro(),
+        '/perjanjian': (context) => Perjanjian(),
       },
     );
   }

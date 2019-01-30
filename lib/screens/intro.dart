@@ -28,7 +28,7 @@ class Intro extends StatelessWidget {
         foregroundColor: Colors.white,
         child: Icon(Icons.arrow_forward_ios),
         onPressed: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => _Intro2()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => _Intro2()));
         },
       ),
     );
@@ -60,7 +60,7 @@ class _Intro2 extends StatelessWidget {
         foregroundColor: Colors.white,
         child: Icon(Icons.arrow_forward_ios),
         onPressed: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => _Intro3()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => _Intro3()));
         },
       ),
     );
@@ -93,7 +93,7 @@ class _Intro3 extends StatelessWidget {
         foregroundColor: Colors.white,
         child: Icon(Icons.arrow_forward_ios),
         onPressed: () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => _Intro4()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => _Intro4()));
         },
       ),
     );
@@ -117,17 +117,12 @@ class _Intro4 extends StatelessWidget {
               Text('MedUp memberikan kemudahan untuk', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
               Text('menjangkau dokter dan fasilitas kesehatan terbaik', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
               Text('dengan mudah.', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              ButtonSquare('MULAI', (){
+                Navigator.pushNamedAndRemoveUntil(context,'/home' , (_) => false);
+              }),
             ],
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        child: Icon(Icons.arrow_forward_ios),
-        onPressed: () {
-          Navigator.pop(context);
-        },
       ),
     );
   }

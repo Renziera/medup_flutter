@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
+import 'package:medup_flutter/util/network.dart';
 
 class SearchDokter extends StatefulWidget {
   SearchDokter({String spesialis});
@@ -158,5 +159,8 @@ class _SearchDokterState extends State<SearchDokter> {
     );
   }
 
-  void _cari() {}
+  void _cari() {
+    TembakAPI.searchDokter();
+
+  }
 }

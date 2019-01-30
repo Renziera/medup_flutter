@@ -92,7 +92,7 @@ class Beranda extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/intro');
+                  Navigator.pushReplacementNamed(context, '/intro');
                 },
               ),
               Divider(
