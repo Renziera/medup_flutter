@@ -13,7 +13,7 @@ class _SearchDokterState extends State<SearchDokter> {
   String queryNama = "";
   TextField _textField = TextField();
 
-  _SearchDokterState({String spesialis}){
+  _SearchDokterState({String spesialis}) {
     //_textField.controller.text;
   }
 
@@ -112,29 +112,35 @@ class _SearchDokterState extends State<SearchDokter> {
                     height: 80.0,
                     width: 80.0,
                   ),
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'dr. Wijaya Kusuma',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18.0),
-                        ),
-                        Text(
-                          'Spesialis Ternak Lele',
-                          style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-                        ),
-                        Text('Belum ada data pengalaman',style: TextStyle(fontSize: 12.0,)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            ButtonSquare('BOOK', null),
-                          ],
-                        ),
-                      ],
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'dr. Wijaya Kusuma',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18.0),
+                          ),
+                          Text(
+                            'Spesialis Ternak Lele',
+                            style: TextStyle(
+                                fontSize: 12.0, fontWeight: FontWeight.bold),
+                          ),
+                          Text('Belum ada data pengalaman',
+                              style: TextStyle(
+                                fontSize: 12.0,
+                              )),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              ButtonSquare('BOOK', null),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -152,7 +158,5 @@ class _SearchDokterState extends State<SearchDokter> {
     );
   }
 
-  void _cari(){
-
-  }
+  void _cari() {}
 }

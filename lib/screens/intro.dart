@@ -12,7 +12,13 @@ class Intro extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset('assets/images/intro_1.png'),
-              Text('Selamat datang di MedUp')
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Temukan Dokter dan Fasilitas', style: TextStyle(fontSize: 20.0, color: Colors.black),),
+              Text('Kesehatan Terbaik', style: TextStyle(fontSize: 20.0, color: Colors.black),),
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Anda dapat mencari dan menemukan dokter dan', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('fasilitas kesehatan terbaik sesuai', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('dengan kebutuhan Anda.', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
             ],
           ),
         ],
@@ -22,7 +28,7 @@ class Intro extends StatelessWidget {
         foregroundColor: Colors.white,
         child: Icon(Icons.arrow_forward_ios),
         onPressed: () {
-          Navigator.pushReplacement(context, null);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => _Intro2()));
         },
       ),
     );
@@ -40,7 +46,11 @@ class _Intro2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset('assets/images/intro_2.png'),
-              Text('Selamat datang di MedUp')
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Buat Janji Secara Online', style: TextStyle(fontSize: 20.0, color: Colors.black),),
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Buat janji dengan dokter secara mudah dan', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('cepat dari handphone Anda.', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
             ],
           ),
         ],
@@ -50,7 +60,7 @@ class _Intro2 extends StatelessWidget {
         foregroundColor: Colors.white,
         child: Icon(Icons.arrow_forward_ios),
         onPressed: () {
-          Navigator.pushReplacement(context, null);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => _Intro3()));
         },
       ),
     );
@@ -68,7 +78,12 @@ class _Intro3 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset('assets/images/intro_3.png'),
-              Text('Selamat datang di MedUp')
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Menghemat Waktu Anda', style: TextStyle(fontSize: 20.0, color: Colors.black),),
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Dengan kemudahan menjadwalkan pertemuan', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('dengan Dokter, Anda dapat menghemat waktu', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('untuk mengantri dan menunggu.', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
             ],
           ),
         ],
@@ -78,7 +93,7 @@ class _Intro3 extends StatelessWidget {
         foregroundColor: Colors.white,
         child: Icon(Icons.arrow_forward_ios),
         onPressed: () {
-          Navigator.pushReplacement(context, null);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => _Intro4()));
         },
       ),
     );
@@ -96,7 +111,12 @@ class _Intro4 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset('assets/images/intro_4.png'),
-              Text('Selamat datang di MedUp')
+              Divider(height: 32, color: Colors.transparent,),
+              Text('Selamat Datang di MedUp', style: TextStyle(fontSize: 20.0, color: Colors.black),),
+              Divider(height: 32, color: Colors.transparent,),
+              Text('MedUp memberikan kemudahan untuk', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('menjangkau dokter dan fasilitas kesehatan terbaik', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
+              Text('dengan mudah.', style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w100),),
             ],
           ),
         ],
