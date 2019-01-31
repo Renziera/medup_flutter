@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
+import 'searchDokter.dart';
 
 class Beranda extends StatelessWidget {
   @override
@@ -313,7 +314,9 @@ class Beranda extends StatelessWidget {
                   'LIHAT SEMUA',
                   style: TextStyle(color: primaryColor, fontSize: 12),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: '',)));
+                },
               )
             ],
           ),

@@ -4,10 +4,11 @@ import 'package:medup_flutter/util/network.dart';
 import 'package:medup_flutter/util/dokter.dart';
 
 class SearchDokter extends StatefulWidget {
-  SearchDokter({String spesialis});
+  String spesialis;
+  SearchDokter({this.spesialis});
   @override
   State<StatefulWidget> createState() {
-    return _SearchDokterState();
+    return _SearchDokterState(spesialis: spesialis);
   }
 }
 
@@ -21,10 +22,14 @@ class _SearchDokterState extends State<SearchDokter> {
 
   List<Dokter> listDokter = List();
 
-  _SearchDokterState({String spesialis}){
-    if(spesialis != null){
+  bool tidakAdaInternet = false;
+  bool tidakDitemukan = false;
+  bool loading = false;
+
+  _SearchDokterState({String spesialis}) {
+    if (spesialis != null) {
+      print('hore');
       spesialisasi = spesialis;
-      _cari();
     }
   }
 
@@ -114,6 +119,18 @@ class _SearchDokterState extends State<SearchDokter> {
   }
 
   Widget _widget() {
+    if(tidakAdaInternet){
+      return _tidakAdaInternet;
+    }
+
+    if(tidakDitemukan){
+      return _tidakDitemukan;
+    }
+
+    if(loading){
+      return _loading;
+    }
+
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
@@ -125,6 +142,27 @@ class _SearchDokterState extends State<SearchDokter> {
   }
 
   Widget _dokterCard(context, index) {
+    Widget _fotoDokter;
+    if (listDokter[index].foto == null) {
+      _fotoDokter = Image.asset(
+        listDokter[index].jenisKelamin
+            ? 'assets/images/ic_default_female_doc.png'
+            : 'assets/images/ic_default_male_doc.png',
+        fit: BoxFit.cover,
+        height: 80.0,
+        width: 80.0,
+      );
+    } else {
+      _fotoDokter = FadeInImage.assetNetwork(
+        image: listDokter[index].foto,
+        placeholder: listDokter[index].jenisKelamin
+            ? 'assets/images/ic_default_female_doc.png'
+            : 'assets/images/ic_default_male_doc.png',
+        fit: BoxFit.cover,
+        height: 80.0,
+        width: 80.0,
+      );
+    }
     return Container(
       padding: EdgeInsets.all(8.0),
       child: Card(
@@ -134,14 +172,7 @@ class _SearchDokterState extends State<SearchDokter> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.network(
-                listDokter[index].foto == null
-                    ? ''
-                    : listDokter[index].foto,
-                height: 80.0,
-                width: 80.0,
-                fit: BoxFit.cover,
-              ),
+              _fotoDokter,
               Expanded(
                 child: Container(
                   padding: EdgeInsets.all(8.0),
@@ -185,8 +216,51 @@ class _SearchDokterState extends State<SearchDokter> {
     );
   }
 
+  Widget _loading = SliverFillRemaining(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          CircularProgressIndicator(),
+        ],
+      ),
+    );
+
+  Widget _tidakAdaInternet = SliverFillRemaining(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image.asset('assets/images/im_no_internet.png', height: 200,),
+          Divider(height: 32, color: Colors.transparent,),
+          Text('Koneksi internet bermasalah', style: TextStyle(fontSize: 18.0, color: primaryColor),),
+        ],
+      ),
+    );
+
+    Widget _tidakDitemukan = SliverFillRemaining(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image.asset('assets/images/im_not_found.png', height: 150,),
+          Divider(height: 32, color: Colors.transparent,),
+          Text('Tidak Ditemukan', style: TextStyle(fontSize: 18.0, color: primaryColor),),
+          Text('Tenaga Kesehatan yang Anda pilih belum'),
+          Text('tersedia di Kota Anda'),
+        ],
+      ),
+    );
+
   void _cari() async {
     FocusScope.of(context).requestFocus(new FocusNode());
+
+    tidakAdaInternet = false;
+    tidakDitemukan = false;
+    loading = true;
+
+    setState(() {});
+
     listDokter = await TembakAPI.searchDokter(
       nama: nama,
       gelar_depan: gelarDepan,
@@ -198,9 +272,21 @@ class _SearchDokterState extends State<SearchDokter> {
 
     if (listDokter == null) {
       //network error
+      tidakAdaInternet = true;
       listDokter = List();
     }
 
+    if(listDokter.length == 0){
+      tidakDitemukan = true;
+    }
+
+    loading = false;
+    
     setState(() {});
   }
+
+  void _next(){
+
+  }
+
 }
