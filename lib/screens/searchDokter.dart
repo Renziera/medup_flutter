@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
 import 'package:medup_flutter/util/network.dart';
+import 'package:medup_flutter/util/dokter.dart';
 
 class SearchDokter extends StatefulWidget {
   SearchDokter({String spesialis});
@@ -11,11 +12,20 @@ class SearchDokter extends StatefulWidget {
 }
 
 class _SearchDokterState extends State<SearchDokter> {
-  String queryNama = "";
-  TextField _textField = TextField();
+  String nama = '';
+  String spesialisasi = '';
+  String lokasi = '';
+  String jenisKelamin = '';
+  String gelarDepan = '';
+  String jadwalHari = '';
 
-  _SearchDokterState({String spesialis}) {
-    //_textField.controller.text;
+  List<Dokter> listDokter = List();
+
+  _SearchDokterState({String spesialis}){
+    if(spesialis != null){
+      spesialisasi = spesialis;
+      _cari();
+    }
   }
 
   @override
@@ -54,9 +64,17 @@ class _SearchDokterState extends State<SearchDokter> {
                 borderRadius: BorderRadius.circular(8.0), color: Colors.white),
             child: TextField(
               maxLines: 1,
+              textInputAction: TextInputAction.search,
+              onEditingComplete: () {
+                _cari();
+              },
+              onChanged: (value) {
+                nama = value;
+              },
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search),
                 hintText: 'Masukkan nama dokter',
+                border: InputBorder.none,
               ),
             ),
           ),
@@ -96,72 +114,93 @@ class _SearchDokterState extends State<SearchDokter> {
   }
 
   Widget _widget() {
-    return SliverFixedExtentList(
-      itemExtent: 140.0,
-      delegate: SliverChildListDelegate(
-        [
-          Card(
-            elevation: 8.0,
-            child: Container(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/profile_1.png",
-                    height: 80.0,
-                    width: 80.0,
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          return _dokterCard(context, index);
+        },
+        childCount: listDokter.length,
+      ),
+    );
+  }
+
+  Widget _dokterCard(context, index) {
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Image.network(
+                listDokter[index].foto == null
+                    ? ''
+                    : listDokter[index].foto,
+                height: 80.0,
+                width: 80.0,
+                fit: BoxFit.cover,
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        listDokter[index].nama,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18.0),
+                      ),
+                      Text(
+                        listDokter[index].spesialisasi == null
+                            ? 'Dokter Umum'
+                            : listDokter[index].spesialisasi,
+                        style: TextStyle(
+                            fontSize: 12.0, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                          listDokter[index].pengalaman == null
+                              ? 'Belum ada data pengalaman'
+                              : listDokter[index].pengalaman,
+                          style: TextStyle(
+                            fontSize: 12.0,
+                          )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          Text(
-                            'dr. Wijaya Kusuma',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18.0),
-                          ),
-                          Text(
-                            'Spesialis Ternak Lele',
-                            style: TextStyle(
-                                fontSize: 12.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text('Belum ada data pengalaman',
-                              style: TextStyle(
-                                fontSize: 12.0,
-                              )),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              ButtonSquare('BOOK', null),
-                            ],
-                          ),
+                          ButtonSquare('BOOK', () {}),
                         ],
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-          Container(color: Colors.red),
-          Container(color: Colors.purple),
-          Container(color: Colors.green),
-          Container(color: Colors.orange),
-          Container(color: Colors.yellow),
-          Container(color: Colors.pink),
-        ],
+        ),
       ),
     );
   }
 
   void _cari() async {
-    print('Sup');
-    String s = await TembakAPI.test();
-    print(s);
+    FocusScope.of(context).requestFocus(new FocusNode());
+    listDokter = await TembakAPI.searchDokter(
+      nama: nama,
+      gelar_depan: gelarDepan,
+      jadwal_hari: jadwalHari,
+      spesialisasi: spesialisasi,
+      jenis_kelamin: jenisKelamin,
+      lokasi: lokasi,
+    );
+
+    if (listDokter == null) {
+      //network error
+      listDokter = List();
+    }
+
+    setState(() {});
   }
 }
