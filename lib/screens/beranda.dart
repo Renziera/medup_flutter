@@ -326,7 +326,9 @@ class Beranda extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: <Widget>[
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: '',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -351,7 +353,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Gigi',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -376,7 +380,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Bedah',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -401,7 +407,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Jantung',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -426,7 +434,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Mata',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -451,7 +461,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Paru',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -476,7 +488,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Kandungan',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -501,7 +515,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Penyakit Dalam',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
@@ -526,7 +542,9 @@ class Beranda extends StatelessWidget {
                   indent: 8.0,
                 ),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchDokter(spesialis: 'Saraf',)));
+                  },
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[

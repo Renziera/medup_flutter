@@ -25,12 +25,50 @@ class _SearchDokterState extends State<SearchDokter> {
   bool tidakAdaInternet = false;
   bool tidakDitemukan = false;
   bool loading = false;
+  bool langsungCari = false;
 
   _SearchDokterState({String spesialis}) {
     if (spesialis != null) {
-      print('hore');
       spesialisasi = spesialis;
+      langsungCari = true;
     }
+  }
+
+  @override
+  initState() {
+    super.initState();
+    if (langsungCari) {
+      tidakAdaInternet = false;
+      tidakDitemukan = false;
+      loading = true;
+      _cariLangsung();
+      langsungCari = false;
+    }
+  }
+
+  void _cariLangsung() async {
+    listDokter = await TembakAPI.searchDokter(
+      nama: nama,
+      gelar_depan: gelarDepan,
+      jadwal_hari: jadwalHari,
+      spesialisasi: spesialisasi,
+      jenis_kelamin: jenisKelamin,
+      lokasi: lokasi,
+    );
+
+    if (listDokter == null) {
+      //network error
+      tidakAdaInternet = true;
+      listDokter = List();
+    }
+
+    if (listDokter.length == 0) {
+      tidakDitemukan = true;
+    }
+
+    loading = false;
+
+    setState(() {});
   }
 
   @override
@@ -119,15 +157,15 @@ class _SearchDokterState extends State<SearchDokter> {
   }
 
   Widget _widget() {
-    if(tidakAdaInternet){
+    if (tidakAdaInternet) {
       return _tidakAdaInternet;
     }
 
-    if(tidakDitemukan){
+    if (tidakDitemukan) {
       return _tidakDitemukan;
     }
 
-    if(loading){
+    if (loading) {
       return _loading;
     }
 
@@ -217,40 +255,58 @@ class _SearchDokterState extends State<SearchDokter> {
   }
 
   Widget _loading = SliverFillRemaining(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          CircularProgressIndicator(),
-        ],
-      ),
-    );
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        CircularProgressIndicator(),
+      ],
+    ),
+  );
 
   Widget _tidakAdaInternet = SliverFillRemaining(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Image.asset('assets/images/im_no_internet.png', height: 200,),
-          Divider(height: 32, color: Colors.transparent,),
-          Text('Koneksi internet bermasalah', style: TextStyle(fontSize: 18.0, color: primaryColor),),
-        ],
-      ),
-    );
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(
+          'assets/images/im_no_internet.png',
+          height: 200,
+        ),
+        Divider(
+          height: 32,
+          color: Colors.transparent,
+        ),
+        Text(
+          'Koneksi internet bermasalah',
+          style: TextStyle(fontSize: 18.0, color: primaryColor),
+        ),
+      ],
+    ),
+  );
 
-    Widget _tidakDitemukan = SliverFillRemaining(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Image.asset('assets/images/im_not_found.png', height: 150,),
-          Divider(height: 32, color: Colors.transparent,),
-          Text('Tidak Ditemukan', style: TextStyle(fontSize: 18.0, color: primaryColor),),
-          Text('Tenaga Kesehatan yang Anda pilih belum'),
-          Text('tersedia di Kota Anda'),
-        ],
-      ),
-    );
+  Widget _tidakDitemukan = SliverFillRemaining(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(
+          'assets/images/im_not_found.png',
+          height: 150,
+        ),
+        Divider(
+          height: 32,
+          color: Colors.transparent,
+        ),
+        Text(
+          'Tidak Ditemukan',
+          style: TextStyle(fontSize: 18.0, color: primaryColor),
+        ),
+        Text('Tenaga Kesehatan yang Anda pilih belum'),
+        Text('tersedia di Kota Anda'),
+      ],
+    ),
+  );
 
   void _cari() async {
     FocusScope.of(context).requestFocus(new FocusNode());
@@ -276,17 +332,14 @@ class _SearchDokterState extends State<SearchDokter> {
       listDokter = List();
     }
 
-    if(listDokter.length == 0){
+    if (listDokter.length == 0) {
       tidakDitemukan = true;
     }
 
     loading = false;
-    
+
     setState(() {});
   }
 
-  void _next(){
-
-  }
-
+  void _next() {}
 }
