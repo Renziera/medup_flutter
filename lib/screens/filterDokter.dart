@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
 
 class FilterDokter extends StatefulWidget {
+  Filter filter;
+  FilterDokter({this.filter});
   @override
   State<StatefulWidget> createState() {
-    return _FilterDokterState();
+    return _FilterDokterState(filter);
   }
 }
 
 class _FilterDokterState extends State<FilterDokter> {
+  Filter _filter;
+  _FilterDokterState(this._filter);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +23,7 @@ class _FilterDokterState extends State<FilterDokter> {
           FlatButton(
             child: Text('Reset', style: TextStyle(color: Colors.white),), 
             onPressed: () {
-
+              
             },
           )
         ],
@@ -106,7 +110,7 @@ class _FilterDokterState extends State<FilterDokter> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ButtonSquare('TERAPKAN', () {
-                Navigator.pop(context);
+                Navigator.pop(context, _filter);
               }),
             ],
           ),
@@ -114,4 +118,13 @@ class _FilterDokterState extends State<FilterDokter> {
       ),
     );
   }
+}
+
+class Filter {
+  String nama = '';
+  String spesialisasi = '';
+  String lokasi = '';
+  String jenisKelamin = '';
+  String gelarDepan = '';
+  String jadwalHari = '';
 }

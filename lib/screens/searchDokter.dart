@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medup_flutter/ui.dart';
 import 'package:medup_flutter/util/network.dart';
 import 'package:medup_flutter/util/dokter.dart';
+import 'filterDokter.dart';
 
 class SearchDokter extends StatefulWidget {
   String spesialis;
@@ -27,6 +28,8 @@ class _SearchDokterState extends State<SearchDokter> {
   bool loading = false;
   bool langsungCari = false;
 
+  Filter filter = Filter();
+
   _SearchDokterState({String spesialis}) {
     if (spesialis != null) {
       spesialisasi = spesialis;
@@ -44,31 +47,6 @@ class _SearchDokterState extends State<SearchDokter> {
       _cariLangsung();
       langsungCari = false;
     }
-  }
-
-  void _cariLangsung() async {
-    listDokter = await TembakAPI.searchDokter(
-      nama: nama,
-      gelar_depan: gelarDepan,
-      jadwal_hari: jadwalHari,
-      spesialisasi: spesialisasi,
-      jenis_kelamin: jenisKelamin,
-      lokasi: lokasi,
-    );
-
-    if (listDokter == null) {
-      //network error
-      tidakAdaInternet = true;
-      listDokter = List();
-    }
-
-    if (listDokter.length == 0) {
-      tidakDitemukan = true;
-    }
-
-    loading = false;
-
-    setState(() {});
   }
 
   @override
@@ -126,7 +104,7 @@ class _SearchDokterState extends State<SearchDokter> {
             children: <Widget>[
               FlatButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/dokter/filter');
+                  _bukaFilter(context);
                 },
                 child: Text('FILTER'),
               ),
@@ -339,6 +317,42 @@ class _SearchDokterState extends State<SearchDokter> {
     loading = false;
 
     setState(() {});
+  }
+
+  void _cariLangsung() async {
+    listDokter = await TembakAPI.searchDokter(
+      nama: nama,
+      gelar_depan: gelarDepan,
+      jadwal_hari: jadwalHari,
+      spesialisasi: spesialisasi,
+      jenis_kelamin: jenisKelamin,
+      lokasi: lokasi,
+    );
+
+    if (listDokter == null) {
+      //network error
+      tidakAdaInternet = true;
+      listDokter = List();
+    }
+
+    if (listDokter.length == 0) {
+      tidakDitemukan = true;
+    }
+
+    loading = false;
+
+    setState(() {});
+  }
+
+  void _bukaFilter(context) async{
+    filter.nama = nama;
+    filter.gelarDepan = gelarDepan;
+    filter.jenisKelamin = jenisKelamin;
+    filter.jadwalHari = jadwalHari;
+    filter.lokasi = lokasi;
+    filter.spesialisasi = spesialisasi;
+    
+    filter = await Navigator.push(context, MaterialPageRoute(builder: (context) => FilterDokter(filter: filter,)));
   }
 
   void _next() {}
